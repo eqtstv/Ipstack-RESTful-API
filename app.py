@@ -1,15 +1,20 @@
 import os
 import sys
 
+import requests
 import waitress
 from flask import Flask
 
 app = Flask(__name__)
 
+IPSTACK_API_KEY = os.environ["IPSTACK_API_KEY"]
+
 
 @app.route("/")
 def hello_world():
-    return "Hello, World!"
+    URL = f"http://api.ipstack.com/134.201.250.155?access_key={IPSTACK_API_KEY}"
+    example_response = requests.get(URL).json()
+    return example_response
 
 
 if __name__ == "__main__":
