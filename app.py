@@ -16,4 +16,4 @@ if __name__ == "__main__":
         app.run(debug=True)
 
     if sys.argv[1] == "production":
-        waitress.serve(app, host="0.0.0.0", port=8080)
+        waitress.serve(app, port=8080)
