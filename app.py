@@ -1,3 +1,4 @@
+import os
 import sys
 
 import waitress
@@ -16,4 +17,4 @@ if __name__ == "__main__":
         app.run(debug=True)
 
     if sys.argv[1] == "production":
-        waitress.serve(app, port=8080)
+        waitress.serve(app, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
