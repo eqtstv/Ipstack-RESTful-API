@@ -109,7 +109,7 @@ def location():
             return jsonify("Wrong ip address")
 
         cursor = conn.cursor()
-        cursor.execute("SELECT ip FROM geodata WHERE ip=%s", (address,))
+        cursor.execute("SELECT ip FROM geodata WHERE address=%s", (address,))
         row = cursor.fetchall()
 
         if row:
