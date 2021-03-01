@@ -145,7 +145,7 @@ def location():
         row = cursor.fetchall()
 
         if not row:
-            return make_response(jsonify("Ip address not in the database"))
+            return make_response(jsonify("Address not in the database"))
 
         cursor.execute("DELETE FROM geodata WHERE ip=%s", (address,))
         conn.commit()
@@ -158,6 +158,8 @@ def location():
             dict((cursor.description[i][0], value) for i, value in enumerate(row))
             for row in cursor.fetchall()
         ]
+        if not r:
+            return make_response(jsonify("Address not in the database"))
         return json.dumps(r)
 
 
