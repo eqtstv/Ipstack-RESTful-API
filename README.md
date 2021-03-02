@@ -106,7 +106,7 @@ else:
 
 url: `/location`
 
-method: `POST`
+### method: `POST`
 
 ```python
 requests.post("https://sofomo-assignment.herokuapp.com/location",
@@ -134,7 +134,7 @@ OR
 
 - `Missing JSON in request.`
 
-method: `DELETE`
+### method: `DELETE`
 
 ```python
 requests.delete("https://sofomo-assignment.herokuapp.com/location",
@@ -162,7 +162,7 @@ OR
 
 - `Missing JSON in request.`
 
-method: `GET`
+### method: `GET`
 
 ```python
 requests.get("https://sofomo-assignment.herokuapp.com/location",
