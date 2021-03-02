@@ -3,6 +3,7 @@
 https://sofomo-assignment.herokuapp.com/
 
 docker build --no-cache -t sofomo-assignment:latest .
+
 docker run -dp 5000:5000 sofomo-assignment
 
 Run examples by specifying target (local or cloud)
