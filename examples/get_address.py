@@ -18,7 +18,7 @@ else:
     print(req)
 
 
-json = {"address": "www.olx.pl"}
+json = {"address": "www.google.com"}
 
 req = requests.post(
     f"{URL}/location",
