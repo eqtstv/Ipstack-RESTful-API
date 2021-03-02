@@ -1,5 +1,5 @@
 waitress==1.4.4
 Flask_JWT_Extended==3.25.0
-psycopg2==2.8.5
+psycopg2-binary==2.8.6
 Flask==1.1.2
 requests==2.23.0
