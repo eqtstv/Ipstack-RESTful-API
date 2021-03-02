@@ -17,26 +17,26 @@ IPSTACK_API_KEY = os.environ["IPSTACK_API_KEY"]
 @jwt_required
 def location():
     if not request.is_json:
-        return make_response(jsonify({"Missing JSON in request."}), 400)
+        return make_response(jsonify("Missing JSON in request."), 400)
 
     address = request.json.get("address", None)
 
     if not address:
-        return make_response(jsonify({"Wrong json"}), 400)
+        return make_response(jsonify("Wrong json"), 400)
 
     if request.method == "POST":
         url = f"{IPSTACK_API_URL}/{address}?access_key={IPSTACK_API_KEY}"
         response = requests.get(url).json()
 
         if response["type"] is None:
-            return jsonify("Wrong ip address")
+            return make_response(jsonify("Wrong ip address"), 400)
 
         cursor = conn.cursor()
         cursor.execute("SELECT ip FROM geodata WHERE address=%s", (address,))
         row = cursor.fetchall()
 
         if row:
-            return make_response(jsonify("Ip address already in the database"))
+            return make_response(jsonify("Ip address already in the database"), 400)
 
         cursor.execute(
             "INSERT INTO geodata \
@@ -60,7 +60,7 @@ def location():
             ),
         )
         conn.commit()
-        return make_response(jsonify(f"Address {address} added to the database"))
+        return make_response(jsonify(f"Address {address} added to the database"), 200)
 
     elif request.method == "DELETE":
         cursor = conn.cursor()
@@ -68,11 +68,13 @@ def location():
         row = cursor.fetchall()
 
         if not row:
-            return make_response(jsonify("Address not in the database"))
+            return make_response(jsonify("Address not in the database"), 400)
 
         cursor.execute("DELETE FROM geodata WHERE ip=%s", (address,))
         conn.commit()
-        return make_response(jsonify(f"Address {address} deleted from the database"))
+        return make_response(
+            jsonify(f"Address {address} deleted from the database"), 200
+        )
 
     else:
         cursor = conn.cursor()
@@ -82,5 +84,5 @@ def location():
             for row in cursor.fetchall()
         ]
         if not r:
-            return make_response(jsonify("Address not in the database"))
+            return make_response(jsonify("Address not in the database"), 400)
         return json.dumps(r[0])
