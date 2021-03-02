@@ -7,15 +7,23 @@ from flask_app.db import conn
 auth = Blueprint("auth", __name__)
 
 
+def is_valid_json(username, password):
+    if not username or username == "":
+        return False
+    if not password or len(password) < 8:
+        return False
+    return True
+
+
 @auth.route("/register", methods=["POST"])
 def register():
-    username = request.json["username"]
-    password = request.json["password"]
+    username = request.json.get("username", None)
+    password = request.json.get("password", None)
 
-    if not username:
-        return make_response(jsonify({"msg": "Missing username parameter."}), 400)
-    if not password:
-        return make_response(jsonify({"msg": "Missing password parameter."}), 400)
+    if not is_valid_json(username, password):
+        return make_response(
+            jsonify({"msg": "Wrong username or password parameter."}), 400
+        )
 
     cursor = conn.cursor()
     cursor.execute(
@@ -44,10 +52,10 @@ def login():
     username = request.json.get("username", None)
     password = request.json.get("password", None)
 
-    if not username:
-        return make_response(jsonify({"msg": "Missing username parameter."}), 400)
-    if not password:
-        return make_response(jsonify({"msg": "Missing password parameter."}), 400)
+    if not is_valid_json(username, password):
+        return make_response(
+            jsonify({"msg": "Wrong username or password parameter."}), 400
+        )
 
     cursor = conn.cursor()
     cursor.execute(
