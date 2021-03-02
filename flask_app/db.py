@@ -7,9 +7,12 @@ DATABASE_PASSWORD = os.environ["DATABASE_PASSWORD"]
 DATABASE_DATABASE = os.environ["DATABASE_DATABASE"]
 
 
-conn = psycopg2.connect(
-    host=DATABASE_HOST,
-    user=DATABASE_USER,
-    password=DATABASE_PASSWORD,
-    database=DATABASE_DATABASE,
-)
+try:
+    conn = psycopg2.connect(
+        host=DATABASE_HOST,
+        user=DATABASE_USER,
+        password=DATABASE_PASSWORD,
+        database=DATABASE_DATABASE,
+    )
+except Exception as e:
+    print("Failed to connect to database")
