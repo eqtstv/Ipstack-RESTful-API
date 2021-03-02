@@ -17,7 +17,7 @@ IPSTACK_API_KEY = os.environ["IPSTACK_API_KEY"]
 @jwt_required
 def location():
     if not request.is_json:
-        return make_response(jsonify("Missing JSON in request."), 400)
+        return make_response(jsonify("Missing JSON in request"), 400)
 
     address = request.json.get("address", None)
 
