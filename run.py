@@ -2,7 +2,6 @@ import os
 import sys
 
 import waitress
-import env
 
 from flask_app.app import app
 
