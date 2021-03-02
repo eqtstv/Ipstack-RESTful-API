@@ -21,9 +21,7 @@ def register():
     password = request.json.get("password", None)
 
     if not is_valid_json(username, password):
-        return make_response(
-            jsonify({"msg": "Wrong username or password parameter."}), 400
-        )
+        return make_response(jsonify({"Wrong username or password parameter."}), 400)
 
     cursor = conn.cursor()
     cursor.execute(
@@ -47,15 +45,13 @@ def register():
 @auth.route("/login", methods=["POST"])
 def login():
     if not request.is_json:
-        return make_response(jsonify({"msg": "Missing JSON in request."}), 400)
+        return make_response(jsonify({"Missing JSON in request."}), 400)
 
     username = request.json.get("username", None)
     password = request.json.get("password", None)
 
     if not is_valid_json(username, password):
-        return make_response(
-            jsonify({"msg": "Wrong username or password parameter."}), 400
-        )
+        return make_response(jsonify({"Wrong username or password parameter."}), 400)
 
     cursor = conn.cursor()
     cursor.execute(
@@ -64,7 +60,7 @@ def login():
     user = cursor.fetchall()
 
     if not user or not check_password_hash(user[0][1], password):
-        return make_response(jsonify({"msg": "Bad email or password."}), 401)
+        return make_response(jsonify({"Bad email or password."}), 401)
 
     access_token = create_access_token(identity=username)
     return make_response(jsonify(access_token=access_token), 200)
