@@ -14,5 +14,5 @@ try:
         password=DATABASE_PASSWORD,
         database=DATABASE_DATABASE,
     )
-except Exception as e:
+except Exception:
     print("Failed to connect to database")
