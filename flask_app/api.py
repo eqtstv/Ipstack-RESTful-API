@@ -29,14 +29,14 @@ def location():
         response = requests.get(url).json()
 
         if response["type"] is None:
-            return make_response(jsonify("Wrong ip address"), 400)
+            return make_response(jsonify("Wrong address"), 400)
 
         cursor = conn.cursor()
         cursor.execute("SELECT ip FROM geodata WHERE address=%s", (address,))
         row = cursor.fetchall()
 
         if row:
-            return make_response(jsonify("Ip address already in the database"), 400)
+            return make_response(jsonify("Address already in the database"), 400)
 
         cursor.execute(
             "INSERT INTO geodata \
