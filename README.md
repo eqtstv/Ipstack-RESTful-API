@@ -1,4 +1,6 @@
 # sofomo-assignment
+[![Tests](https://github.com/eqtstv/Ipstack-RESTful-API/actions/workflows/test.yml/badge.svg)](https://github.com/eqtstv/Ipstack-RESTful-API/actions/workflows/test.yml)
+[![Flake8-black Linter](https://github.com/eqtstv/Ipstack-RESTful-API/actions/workflows/linter.yml/badge.svg)](https://github.com/eqtstv/Ipstack-RESTful-API/actions/workflows/linter.yml)
 
 https://sofomo-assignment.herokuapp.com/
 
