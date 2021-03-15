@@ -1,12 +1,9 @@
-# sofomo-assignment
+# Ipstack-RESTful-API
 [![Tests](https://github.com/eqtstv/Ipstack-RESTful-API/actions/workflows/test.yml/badge.svg)](https://github.com/eqtstv/Ipstack-RESTful-API/actions/workflows/test.yml)
 [![Flake8-black Linter](https://github.com/eqtstv/Ipstack-RESTful-API/actions/workflows/linter.yml/badge.svg)](https://github.com/eqtstv/Ipstack-RESTful-API/actions/workflows/linter.yml)
 
-https://sofomo-assignment.herokuapp.com/
+https://ipstack-restful-api.herokuapp.com/
 
-docker build --no-cache -t sofomo-assignment:latest .
-
-docker run -dp 5000:5000 sofomo-assignment
 
 Run examples by specifying target (local or cloud)
 
@@ -31,7 +28,7 @@ json format:
 example request:
 
 ```python
-requests.post("https://sofomo-assignment.herokuapp.com/register",
+requests.post("https://ipstack-restful-api.herokuapp.com/register",
      json={"username": "exampleuser", "password": "examplepassword"}).json()
 ```
 
@@ -66,7 +63,7 @@ json format:
 example request:
 
 ```python
-requests.post("https://sofomo-assignment.herokuapp.com/login",
+requests.post("https://ipstack-restful-api.herokuapp.com/login",
      json={"username": "exampleuser", "password": "examplepassword"}).json()
 ```
 
@@ -97,7 +94,7 @@ Protected by JWT
 ```python
 json = {"username": "testuser", "password": "longpassword"}
 
-req = requests.post("https://sofomo-assignment.herokuapp.com/login",
+req = requests.post("https://ipstack-restful-api.herokuapp.com/login",
      json={"username": "exampleuser", "password": "examplepassword"}).json()
 
 if "access_token" in req:
@@ -112,7 +109,7 @@ url: `/location`
 ### method: `POST`
 
 ```python
-requests.post("https://sofomo-assignment.herokuapp.com/location",
+requests.post("https://ipstack-restful-api.herokuapp.com/location",
      json={"address": "www.google.com"},
      headers={"Authorization": f"Bearer {auth_token}"}).json()
 ```
@@ -140,7 +137,7 @@ OR
 ### method: `DELETE`
 
 ```python
-requests.delete("https://sofomo-assignment.herokuapp.com/location",
+requests.delete("https://ipstack-restful-api.herokuapp.com/location",
      json={"address": "www.google.com"},
      headers={"Authorization": f"Bearer {auth_token}"}).json()
 ```
@@ -168,7 +165,7 @@ OR
 ### method: `GET`
 
 ```python
-requests.get("https://sofomo-assignment.herokuapp.com/location",
+requests.get("https://ipstack-restful-api.herokuapp.com/location",
      json={"address": "www.google.com"},
      headers={"Authorization": f"Bearer {auth_token}"}).json()
 ```
