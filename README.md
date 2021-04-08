@@ -2,6 +2,8 @@
 [![Tests](https://github.com/eqtstv/Ipstack-RESTful-API/actions/workflows/test.yml/badge.svg)](https://github.com/eqtstv/Ipstack-RESTful-API/actions/workflows/test.yml)
 [![Flake8-black Linter](https://github.com/eqtstv/Ipstack-RESTful-API/actions/workflows/linter.yml/badge.svg)](https://github.com/eqtstv/Ipstack-RESTful-API/actions/workflows/linter.yml)
 
+### Ipstack RESTful API built with Flask and deployed to Heroku & PostgreSQL
+
 https://ipstack-restful-api.herokuapp.com/
 
 
